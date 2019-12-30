@@ -2,8 +2,9 @@ from test_framework import generic_test
 
 
 def parity(x):
-    # TODO - you fill in here.
-    return 0
+    mask_size = 16
+    bit_mask = 0xffff
+    return PRECOMPUTED_PARITY[x >> 3 * mask_size] ^ PRECOMPUTED_PARITY[x >> 2 * mask_size] & bit_mask ^ PRECOMPUTED_PARITY[x >>]
 
 
 if __name__ == '__main__':
