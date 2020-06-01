@@ -8,8 +8,13 @@ RED, WHITE, BLUE = range(3)
 
 
 def dutch_flag_partition(pivot_index, A):
-    # TODO - you fill in here.
-    return
+    p_ele = A[pivot_index]
+    for i, v in enumerate(A):
+        if v < p_ele:
+            A.insert(A.pop(i), 0)
+        elif v > p_ele:
+            A.insert(A.pop(i), -1)
+    return A
 
 
 @enable_executor_hook

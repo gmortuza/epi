@@ -7,17 +7,18 @@ from test_framework.test_utils import enable_executor_hook
 
 
 def even_odd(A):
-    next_even,  next_odd = 0, len(A) - 1
-    while next_even < next_odd:
-        if A[next_even] % 2 == 0:
-            # Do nothing just
-            next_even += 1
-        else:
-            # It's odd
-            A[next_even], A[next_odd] = A[next_odd], A[next_even]
-            next_odd -= 1
-    return A
-
+    even, odd = 0, len(A)-1
+    while even < odd:
+        if A[even] % 2 != 0 and A[odd] % 2 == 0:
+            # swap
+            A[odd], A[even] = A[even], A[odd]
+            odd -= 1
+            even += 1
+            continue
+        if A[even] % 2 == 0:
+            even += 1
+        if A[odd] % 2 != 0:
+            odd -= 1
 
 @enable_executor_hook
 def even_odd_wrapper(executor, A):
